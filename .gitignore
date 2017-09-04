@@ -3,3 +3,5 @@ CefSharp/LegacyWpfClient/LegacyWpfClient/bin
 CefSharp/LegacyWpfClient/LegacyWpfClient/obj
 CefSharp/LegacyWpfClient/packages
 dist
+CefSharp/LegacyWpfClient/.vs
+npm-debug.log
