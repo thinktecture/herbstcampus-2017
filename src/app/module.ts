@@ -20,7 +20,6 @@ import {PlatformService} from './services/platform';
 import {NgProgressCustomBrowserXhr, NgProgressModule} from 'ng2-progressbar';
 import {NgxElectronModule} from 'ngx-electron';
 import {DesktopIntegrationService} from './services/desktopIntegration';
-import {MirrorComponent} from './components/mirror/mirror';
 import {CameraService, cameraServiceFactory} from './services/camera';
 
 @NgModule({
@@ -32,8 +31,7 @@ import {CameraService, cameraServiceFactory} from './services/camera';
     StarWarsListComponent,
     StarWarsDetailComponent,
     PokemonListComponent,
-    PokemonDetailComponent,
-    MirrorComponent
+    PokemonDetailComponent
   ],
   imports: [
     BrowserModule,

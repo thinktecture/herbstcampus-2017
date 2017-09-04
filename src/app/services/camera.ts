@@ -1,6 +1,5 @@
 import {Observable} from 'rxjs/Observable';
 import {DesktopCameraService} from './desktopCamera';
-import {MobileCameraService} from './mobileCamera';
 import {PlatformService} from './platform';
 
 export interface ICameraService {
@@ -12,9 +11,5 @@ export abstract class CameraService implements ICameraService {
 }
 
 export function cameraServiceFactory(platformService: PlatformService): ICameraService {
-    if (platformService.isMobileDevice) {
-        return new MobileCameraService();
-    }
-
     return new DesktopCameraService();
 }

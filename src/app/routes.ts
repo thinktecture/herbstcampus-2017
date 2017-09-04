@@ -4,7 +4,6 @@ import {StarWarsListComponent} from './components/list/starWarsList';
 import {StarWarsDetailComponent} from './components/detail/starWarsDetail';
 import {PokemonListComponent} from './components/list/pokemonList';
 import {PokemonDetailComponent} from './components/detail/pokemonDetail';
-import {MirrorComponent} from './components/mirror/mirror';
 
 export const ROUTES: Routes = [
   {
@@ -15,10 +14,6 @@ export const ROUTES: Routes = [
   {
     path: 'home',
     component: HomeComponent
-  },
-  {
-    path: 'mirror',
-    component: MirrorComponent
   },
   {
     path: 'starwars',
