@@ -1,1 +1,4 @@
 node_modules
+CefSharp
+dist
+npm-debug.log
