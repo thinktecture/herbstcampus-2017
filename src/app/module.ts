@@ -17,10 +17,10 @@ import {PokemonListComponent} from './components/list/pokemonList';
 import {PokemonDetailComponent} from './components/detail/pokemonDetail';
 import {PokemonService} from './services/pokemon';
 import {PlatformService} from './services/platform';
-import {NgProgressCustomBrowserXhr, NgProgressModule} from 'ng2-progressbar';
 import {NgxElectronModule} from 'ngx-electron';
 import {DesktopIntegrationService} from './services/desktopIntegration';
 import {CameraService, cameraServiceFactory} from './services/camera';
+import {NgProgressBrowserXhr, NgProgressModule} from 'ngx-progressbar';
 
 @NgModule({
   declarations: [
@@ -48,7 +48,7 @@ import {CameraService, cameraServiceFactory} from './services/camera';
     PokemonService,
     PlatformService,
     DesktopIntegrationService,
-    { provide: BrowserXhr, useClass: NgProgressCustomBrowserXhr },
+    { provide: BrowserXhr, useClass: NgProgressBrowserXhr },
     {
       provide: CameraService, useFactory: cameraServiceFactory, deps: [PlatformService]
     }
