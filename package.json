@@ -11,7 +11,7 @@
     "clean-install": "npm run clean && npm install",
     "clean-start": "npm run clean-install && npm start",
     "build": "rimraf dist && ng build --output-path=\"dist/web\" --base-href=\".\"",
-    "prod": "rimraf dist && ng build --prod --aot=true --stats-json=true --output-path=\"dist/web\" --base-href=\".\"",
+    "prod": "rimraf dist && ng build --prod --build-optimizer --stats-json=true --output-path=\"dist/web\" --base-href=\".\"",
     "prepare-electron": "mkdirp ./tmp/web && ncp buildAssets/desktop tmp && ncp dist/web tmp/web",
     "package-desktop": "npm run prepare-electron && electron-packager ./tmp/ --all --asar --electron-version=1.6.2 --icon=\"buildAssets/resources/icon\" --out=./dist/desktop/ && rimraf tmp",
     "package-desktop-macos": "npm run prepare-electron && electron-packager ./tmp/ --platform=darwin --asar --electron-version=1.6.2 --icon=\"buildAssets/resources/icon\" --out=./dist/desktop/ && rimraf tmp",
@@ -32,7 +32,10 @@
     "prod-mobile-ios": "npm run prod && npm run package-mobile-ios",
     "prod-mobile-android": "npm run prod && npm run package-mobile-android",
     "prod-mobile-windows": "npm run prod && npm run package-mobile-windows",
-    "bundle-report": "webpack-bundle-analyzer dist/web/stats.json"
+    "bundle-report": "webpack-bundle-analyzer dist/web/stats.json",
+    "predocker-build": "npm run build",
+    "docker-build": "docker build -t confmr.azurecr.io/herbstcampus-2017:latest .",
+    "docker-push": "docker push confmr.azurecr.io/herbstcampus-2017"
   },
   "private": true,
   "dependencies": {
@@ -55,7 +58,7 @@
     "zone.js": "0.8.4"
   },
   "devDependencies": {
-    "@angular/cli": "1.0.0-rc.2",
+    "@angular/cli": "1.4.3",
     "@angular/compiler-cli": ">=4.0.0-rc.5 <5.0.0",
     "@types/cordova": "0.0.34",
     "@types/cordova-plugin-device": "0.0.3",
