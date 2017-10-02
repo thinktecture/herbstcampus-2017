@@ -1,14 +1,14 @@
 import {Injectable} from '@angular/core';
-import {Http} from '@angular/http';
 import {Observable} from 'rxjs/Rx';
 import {StarWarsPeople} from '../models/starWarsPeople';
 import {StarWarsPlanet} from '../models/starWarsPlanet';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable()
 export class StarWarsService {
   private readonly _baseUrl = 'https://swapi.co/api/';
 
-  constructor(private _http: Http) {
+  constructor(private _http: HttpClient) {
   }
 
   public listPeople(page: number = 1): Observable<StarWarsPeople[]> {
@@ -28,8 +28,7 @@ export class StarWarsService {
   }
 
   private _list<T>(what: string, page: number, deserializeFn: (obj: any) => T): Observable<T[]> {
-    return this._http.get(`${this._baseUrl}${what}?page=${page}`)
-      .map(response => response.json())
+    return this._http.get<T[]>(`${this._baseUrl}${what}?page=${page}`)
       .switchMap((json: any) => Observable.from(json.results))
       .map(obj => deserializeFn(obj))
       .toArray();
@@ -37,7 +36,6 @@ export class StarWarsService {
 
   private _get<T>(what: string, id: number, deserializeFn: (obj: any) => T): Observable<T> {
     return this._http.get(`${this._baseUrl}${what}/${id}`)
-      .map(response => response.json())
       .map(obj => deserializeFn(obj));
   }
 }
